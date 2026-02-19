@@ -6,21 +6,23 @@
   <title>旅のしおり（2/25–2/27）</title>
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#111a2e;
-      --muted:#a9b3c7;
-      --text:#eaf0ff;
-      --line:rgba(255,255,255,.10);
-      --accent:#7aa2ff;
-      --accent2:#7cffb2;
-      --warn:#ffcf7a;
+      /* ===== Light theme (white-based) ===== */
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --muted:#5f6b80;
+      --text:#0b1220;
+      --line:rgba(11,18,32,.10);
+      --accent:#2f6bff;
+      --accent2:#00a36c;
+      --warn:#b15a00;
     }
     *{box-sizing:border-box}
     body{
       margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(122,162,255,.25), transparent 55%),
-                  radial-gradient(1000px 500px at 80% 10%, rgba(124,255,178,.18), transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(47,107,255,.10), transparent 55%),
+        radial-gradient(1000px 500px at 80% 10%, rgba(0,163,108,.08), transparent 60%),
+        var(--bg);
       color:var(--text);
     }
     header{
@@ -38,7 +40,7 @@
     }
     .btn{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
+      background:rgba(11,18,32,.03);
       color:var(--text);
       padding:10px 12px;
       border-radius:12px;
@@ -46,14 +48,14 @@
       font-weight:600;
       transition:.15s;
     }
-    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.09)}
-    .btn.primary{border-color:rgba(122,162,255,.6); background:rgba(122,162,255,.18)}
-    .btn.danger{border-color:rgba(255,122,122,.6); background:rgba(255,122,122,.14)}
+    .btn:hover{transform:translateY(-1px); background:rgba(11,18,32,.06)}
+    .btn.primary{border-color:rgba(47,107,255,.45); background:rgba(47,107,255,.10)}
+    .btn.danger{border-color:rgba(220,38,38,.35); background:rgba(220,38,38,.08)}
     .pill{
       display:inline-flex; gap:8px; align-items:center;
       padding:8px 10px; border:1px solid var(--line);
       border-radius:999px; color:var(--muted); font-size:12px;
-      background:rgba(255,255,255,.04);
+      background:rgba(11,18,32,.02);
     }
     main{max-width:1100px; margin:0 auto; padding:12px 16px 40px}
     .grid{
@@ -65,15 +67,16 @@
     }
     .card{
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: var(--card);
       border-radius:18px;
       overflow:hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      box-shadow: 0 10px 30px rgba(11,18,32,.08);
     }
     .card-h{
       padding:14px 14px 10px;
       border-bottom:1px solid var(--line);
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      background: linear-gradient(180deg, rgba(47,107,255,.06), rgba(255,255,255,0));
     }
     .card-h h2{
       margin:0; font-size:16px;
@@ -88,7 +91,7 @@
       border:1px solid var(--line);
       border-radius:999px;
       padding:6px 10px;
-      background:rgba(255,255,255,.04);
+      background:rgba(11,18,32,.02);
     }
     table{
       width:100%;
@@ -97,7 +100,7 @@
       overflow:hidden;
       border:1px solid var(--line);
       border-radius:14px;
-      background:rgba(0,0,0,.18);
+      background:rgba(11,18,32,.02);
     }
     thead th{
       text-align:left;
@@ -105,18 +108,18 @@
       color:var(--muted);
       padding:10px 10px;
       border-bottom:1px solid var(--line);
-      background:rgba(255,255,255,.03);
+      background:rgba(11,18,32,.03);
     }
     tbody td{
       padding:10px 10px;
-      border-bottom:1px solid rgba(255,255,255,.07);
+      border-bottom:1px solid rgba(11,18,32,.07);
       vertical-align:top;
       font-size:14px;
     }
     tbody tr:last-child td{border-bottom:none}
-    .time{white-space:nowrap; color:rgba(234,240,255,.92); font-variant-numeric: tabular-nums}
+    .time{white-space:nowrap; color:rgba(11,18,32,.92); font-variant-numeric: tabular-nums}
     .place{color:var(--muted); font-size:12px; margin-top:2px}
-    .note{color:rgba(234,240,255,.85); font-size:12px; margin-top:4px}
+    .note{color:rgba(11,18,32,.80); font-size:12px; margin-top:4px}
     .cost{
       display:flex; align-items:center; gap:8px; justify-content:flex-end;
       white-space:nowrap;
@@ -126,14 +129,23 @@
       padding:10px 10px;
       border-radius:12px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
+      background:#fff;
       color:var(--text);
       outline:none;
       font-size:14px;
       font-variant-numeric: tabular-nums;
     }
-    input[type="number"]:focus{border-color:rgba(122,162,255,.8); box-shadow: 0 0 0 3px rgba(122,162,255,.18)}
+    input[type="number"]:focus{border-color:rgba(47,107,255,.55); box-shadow: 0 0 0 3px rgba(47,107,255,.16)}
     .yen{color:var(--muted); font-size:12px}
+
+    /* number入力の上下ボタンを消す（見た目が「点」っぽく見える環境対策） */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"]{ -moz-appearance: textfield; }
+
     .totals{
       display:grid; gap:10px;
     }
@@ -141,7 +153,7 @@
       padding:12px 12px;
       border:1px solid var(--line);
       border-radius:16px;
-      background:rgba(255,255,255,.04);
+      background:rgba(11,18,32,.02);
     }
     .stat .k{color:var(--muted); font-size:12px}
     .stat .v{font-size:20px; font-weight:800; margin-top:6px; font-variant-numeric: tabular-nums}
@@ -153,9 +165,9 @@
       line-height:1.6;
     }
     .warn{
-      border-color:rgba(255,207,122,.45);
-      background:rgba(255,207,122,.10);
-      color:rgba(255,240,220,.95);
+      border-color:rgba(177,90,0,.28);
+      background:rgba(255,231,198,.55);
+      color:rgba(80,40,0,.95);
     }
     .footer{
       margin-top:18px; color:var(--muted); font-size:12px; text-align:center;
@@ -200,13 +212,13 @@
         <div class="card" style="margin-bottom:12px">
           <div class="card-h">
             <div>
-              <h2>2/25（神戸 → 鳴門 → うだつ → 徳島泊）</h2>
-              <small>祖谷（大歩危・祖谷温泉郷）は無し版</small>
+              <h2>2/25（神戸 → 鳴門 → 徳島泊）</h2>
+              <small>うだつの町並み削除版</small>
               <div class="meta">
                 <span class="tag">神戸空港 8:40着</span>
                 <span class="tag">渦潮</span>
                 <span class="tag">淡路島SA</span>
-                <span class="tag">うだつの町並み</span>
+                <span class="tag">徳島市内</span>
                 <span class="tag">cottage coliberty</span>
               </div>
             </div>
@@ -293,28 +305,17 @@
                   </td>
                 </tr>
 
-                <tr>
-                  <td class="time">14:00</td>
-                  <td>
-                    うだつの町並み
-                    <div class="place">美馬市 脇町</div>
-                  </td>
-                  <td class="right">
-                    <div class="cost">
-                      <input type="number" min="0" step="1" inputmode="numeric" data-day="day1" data-key="d1_1400_udatsu" placeholder="0" />
-                      <span class="yen">円</span>
-                    </div>
-                  </td>
-                </tr>
-
+                <!-- ★ここを書き換え：徳島市内散策 -->
                 <tr>
                   <td class="time">16:00</td>
                   <td>
-                    （余裕枠）大塚国際美術館 or 眉山ロープウェイ
-                    <div class="note">どちらかに使う想定。行かなければ0でOK</div>
+                    徳島市内 散策（眉山・阿波おどり会館・徳島駅周辺など）
+                    <div class="place">徳島市</div>
+                    <div class="note">行きたい所をここにまとめてOK（入館料/ロープウェイ/カフェ等）</div>
                   </td>
                   <td class="right">
                     <div class="cost">
+                      <!-- キーは互換のためそのまま -->
                       <input type="number" min="0" step="1" inputmode="numeric" data-day="day1" data-key="d1_1600_option" placeholder="0" />
                       <span class="yen">円</span>
                     </div>
@@ -362,7 +363,7 @@
               <small>8:00宿出発 / 日の出製麺所は11:00–12:00（10:00着で並ぶ）</small>
               <div class="meta">
                 <span class="tag">日の出製麺所</span>
-                <span class="tag">うどん巡り</span>
+                <span class="tag">がもう</span>
                 <span class="tag">父母ヶ浜</span>
                 <span class="tag">今治</span>
                 <span class="tag">しまなみ</span>
@@ -421,7 +422,8 @@
                 <tr>
                   <td class="time">12:30</td>
                   <td>
-                    うどん②（がもう or 山越）
+                    うどん②（がもう）
+                    <div class="place">香川</div>
                   </td>
                   <td class="right">
                     <div class="cost">
@@ -518,11 +520,11 @@
         <div class="card">
           <div class="card-h">
             <div>
-              <h2>2/27（道後 → 姫路城 → 神戸散策 → 神戸空港 21:15発）</h2>
+              <h2>2/27（道後 → 姫路城 → 有馬温泉 → 神戸空港 21:15発）</h2>
               <small>帰路は渋滞を見て早め行動が安心</small>
               <div class="meta">
                 <span class="tag">姫路城</span>
-                <span class="tag">神戸散策</span>
+                <span class="tag">有馬温泉</span>
                 <span class="tag">21:15離陸</span>
               </div>
             </div>
@@ -567,8 +569,9 @@
                 <tr>
                   <td class="time">13:30</td>
                   <td>
-                    神戸周辺 散策（北野 / 南京町 / メリケンパークなど）
-                    <div class="note">食べ歩き・入館料などまとめてもOK</div>
+                    有馬温泉（立ち寄り）
+                    <div class="place">兵庫・神戸</div>
+                    <div class="note">入浴・食べ歩き・駐車など（まとめてもOK）</div>
                   </td>
                   <td class="right">
                     <div class="cost">
@@ -757,7 +760,7 @@
 
   document.getElementById("copyBtn").addEventListener("click", async () => {
     const text =
-`【旅のしおり】2/25–2/27（神戸→鳴門→徳島→香川うどん→父母ヶ浜→今治→しまなみ→道後→姫路→神戸）
+`【旅のしおり】2/25–2/27（神戸→鳴門→徳島（市内散策）→香川うどん（日の出→がもう）→父母ヶ浜→今治→しまなみ→道後→姫路→有馬温泉→神戸空港）
 このHTMLを開くとタイムスケジュールが見られます。右の欄に実費入力で合計が出ます（入力は端末ごとに保存）。
 費用をみんなで揃える場合は「書き出し(JSON)」→共有→「読み込み(JSON)」で統一できます。`;
     await navigator.clipboard.writeText(text);
@@ -791,12 +794,10 @@
     const d3 = sumByDay("day3");
     const all = d1 + d2 + d3;
 
-    // day pills
     document.getElementById("sum-day1").textContent = yen(d1);
     document.getElementById("sum-day2").textContent = yen(d2);
     document.getElementById("sum-day3").textContent = yen(d3);
 
-    // summary
     document.getElementById("sum-all").textContent = yen(all);
     document.getElementById("sum-day1-dup").textContent = yen(d1);
     document.getElementById("sum-day2-dup").textContent = yen(d2);
